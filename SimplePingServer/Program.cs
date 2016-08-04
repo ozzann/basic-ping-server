@@ -21,7 +21,7 @@ namespace SimplePingServer
 			// Establish the local endpoint for the socket.
 			IPHostEntry ipHostInfo = Dns.GetHostEntry("localhost");
 			IPAddress ipAddress = ipHostInfo.AddressList[0];
-			IPEndPoint localEndPoint = new IPEndPoint(ipAddress, PORT_NO);
+			IPEndPoint localEndPoint = new IPEndPoint(ipAddress, 8080);
 
 			// Create a TCP/IP socket.
 			Socket listener = new Socket(AddressFamily.InterNetwork,
