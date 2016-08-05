@@ -2,6 +2,7 @@
 hostName="localhost:8080"
 outputFileName="curlResult.txt"
 
+
 data="Hello, world!"
 echo `curl -s "$hostName" > $outputFileName`
 

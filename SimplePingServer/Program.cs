@@ -39,7 +39,7 @@ namespace SimplePingServer
 					thread.Reset();
 
 					// Start an asynchronous socket to listen for connections.
-					Console.WriteLine("I'm waiting for a connection...");
+					Console.WriteLine("I'm waiting for a connection!!...");
 					listener.BeginAccept(
 						new AsyncCallback(AcceptCallback),
 						listener);
