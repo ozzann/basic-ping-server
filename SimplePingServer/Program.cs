@@ -11,7 +11,7 @@ namespace SimplePingServer
 {
 	class MainClass
 	{
-		const int PORT_NO = 8080;
+		const int PORT_NO = 9000;
 
 		// Thread signal
 		public static ManualResetEvent thread = new ManualResetEvent(false);
