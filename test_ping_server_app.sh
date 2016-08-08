@@ -1,10 +1,18 @@
 #!/bin/bash
-hostName="localhost:8080"
+hostName="0.0.0.0:9000"
 outputFileName="curlResult.txt"
+
+echo "Preparing tests..........."
+./prepare_tests.sh
 
 
 data="Hello, world!"
-echo `curl -s "$hostName" > $outputFileName`
+echo "Testing a server app......."
+
+curl -v localhost:9000
+
+
+curl  "$hostName" > $outputFileName
 
 response="$(cat "$outputFileName")"
 

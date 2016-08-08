@@ -11,7 +11,7 @@ namespace SimplePingServer
 {
 	class MainClass
 	{
-		const int PORT_NO = 8080;
+		const int PORT_NO = 9000;
 
 		// Thread signal
 		public static ManualResetEvent thread = new ManualResetEvent(false);
@@ -19,13 +19,15 @@ namespace SimplePingServer
 		public static void Listen()
 		{
 			// Establish the local endpoint for the socket.
-			IPHostEntry ipHostInfo = Dns.GetHostEntry("localhost");
-			IPAddress ipAddress = ipHostInfo.AddressList[0];
-			IPEndPoint localEndPoint = new IPEndPoint(ipAddress, PORT_NO);
+			//IPHostEntry ipHostInfo = Dns.GetHostEntry("localhost");
+			//IPAddress ipAddress = ipHostInfo.AddressList[0];
+			//IPEndPoint localEndPoint = new IPEndPoint(ipAddress, PORT_NO);
+			IPEndPoint localEndPoint = new IPEndPoint(IPAddress.Any, PORT_NO);
 
 			// Create a TCP/IP socket.
 			Socket listener = new Socket(AddressFamily.InterNetwork,
 				SocketType.Stream, ProtocolType.Tcp);
+Console.WriteLine(localEndPoint.ToString());
 
 			try
 			{
@@ -59,12 +61,13 @@ namespace SimplePingServer
 
 		public static void AcceptCallback(IAsyncResult ar)
 		{
+Console.WriteLine("111111111111111111");
 			thread.Set();
-
+Console.WriteLine("Begin");
 			Socket listener = (Socket)ar.AsyncState;
 			// socket which handles incoming connections
 			Socket handler = listener.EndAccept(ar);
-
+Console.WriteLine("there is a handler");
 			byte[] buffer = new byte[1024];
 			// handler is starting to recieve data from the listener
 			handler.BeginReceive(buffer, 0, 0, SocketFlags.None,
@@ -74,7 +77,7 @@ namespace SimplePingServer
 		public static void ReadCallback(IAsyncResult ar)
 		{
 			Socket handler = (Socket)ar.AsyncState; ;
-
+Console.WriteLine("?????????????????????");
 			string dataToSend = "Hello, world!\n";
 			Send(handler, dataToSend);
 		}
