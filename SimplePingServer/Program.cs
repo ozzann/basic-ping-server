@@ -19,9 +19,11 @@ namespace SimplePingServer
 		public static void Listen()
 		{
 			// Establish the local endpoint for the socket.
-			IPHostEntry ipHostInfo = Dns.GetHostEntry("localhost");
-			IPAddress ipAddress = ipHostInfo.AddressList[0];
-			IPEndPoint localEndPoint = new IPEndPoint(ipAddress, PORT_NO);
+			//IPHostEntry ipHostInfo = Dns.GetHostEntry("localhost");
+			//IPAddress ipAddress = ipHostInfo.AddressList[0];
+			//IPEndPoint localEndPoint = new IPEndPoint(ipAddress, PORT_NO);
+
+			IPEndPoint localEndPoint = new IPEndPoint(IPAddress.Any, PORT_NO);
 			Console.WriteLine(localEndPoint.ToString());
 
 			// Create a TCP/IP socket.
@@ -39,7 +41,7 @@ namespace SimplePingServer
 				{
 					thread.Reset();
 
-					// Start an asynchronous socket to listen for connections.
+					// Start an asynchronous socket to listen for connections
 					Console.WriteLine("I'm waiting for a connection!!...");
 					listener.BeginAccept(
 						new AsyncCallback(AcceptCallback),
