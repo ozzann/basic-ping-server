@@ -1,15 +1,17 @@
+
 #!/bin/bash
 
-echo "Preparing tests..........."
+echo "Preparing tests.............................."
 ./prepare_tests.sh
 
-echo "Testing a server app......."
+sleep .5
+echo "Test #1: check server's response................"
 
-outputFileName="curlResult.txt"
-curl -s localhost:9011 > $outputFileName 
+RESULT="result.txt"
+curl -s localhost:9000 > $RESULT
 
 EXPECTED="expectedResponse.txt"
-DIFF=$(diff -q "$outputFileName" "$EXPECTED")
+DIFF=$(diff -q  "$RESULT" "$EXPECTED")
 
 if [ "$DIFF" ] 
 then
