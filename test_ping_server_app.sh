@@ -6,7 +6,7 @@ echo "Preparing tests..........."
 echo "Testing a server app......."
 
 outputFileName="curlResult.txt"
-curl -s localhost:9000 > $outputFileName 
+curl -s localhost:9011 > $outputFileName 
 
 EXPECTED="expectedResponse.txt"
 DIFF=$(diff -q "$outputFileName" "$EXPECTED")
