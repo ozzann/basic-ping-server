@@ -1,19 +1,17 @@
 #!/bin/bash
-hostName="localhost:9000"
-outputFileName="curlResult.txt"
 
 echo "Preparing tests..........."
 ./prepare_tests.sh
 
 echo "Testing a server app......."
 
-curl  "$hostName" > $outputFileName
+outputFileName="curlResult.txt"
+curl -s localhost:9000 > $outputFileName 
 
-response="$(cat "$outputFileName")"
+EXPECTED="expectedResponse.txt"
+DIFF=$(diff -q "$outputFileName" "$EXPECTED")
 
-if [ "$response" = "$data" ]; then
-    echo "Success!"
-else
-    echo "Fail!"
+if [ "$DIFF" ] 
+then
+	echo "Fail!"
 fi
-
