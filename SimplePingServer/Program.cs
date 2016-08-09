@@ -43,7 +43,7 @@ Console.WriteLine(localEndPoint.ToString());
 					thread.Reset();
 
 					// Start an asynchronous socket to listen for connections
-					Console.WriteLine("Waiting for a connection!!!!!!!!!!...");
+					Console.WriteLine("Waiting for a connection!!........");
 					listener.BeginAccept(
 						new AsyncCallback(AcceptCallback),
 						listener);
