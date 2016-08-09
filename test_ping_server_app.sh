@@ -14,4 +14,7 @@ DIFF=$(diff -q "$outputFileName" "$EXPECTED")
 if [ "$DIFF" ] 
 then
 	echo "Fail!"
+	exit 0
 fi
+
+exit 1
