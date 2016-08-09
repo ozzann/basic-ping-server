@@ -29,6 +29,7 @@ namespace SimplePingServer
 			// Create a TCP/IP socket.
 			Socket listener = new Socket(AddressFamily.InterNetwork,
 				SocketType.Stream, ProtocolType.Tcp);
+Console.WriteLine(localEndPoint.ToString());
 
 			try
 			{

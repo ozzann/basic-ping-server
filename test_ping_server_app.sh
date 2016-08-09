@@ -2,11 +2,12 @@
 hostName="localhost:9000"
 outputFileName="curlResult.txt"
 
-docker build app .
-docker run -d -p 9000:9000 app
+echo "Preparing tests..........."
+./prepare_tests.sh
 
-data="Hello, world!"
-echo `curl -s "$hostName" > $outputFileName`
+echo "Testing a server app......."
+
+curl  "$hostName" > $outputFileName
 
 response="$(cat "$outputFileName")"
 
