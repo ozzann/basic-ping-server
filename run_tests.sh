@@ -9,7 +9,7 @@ sleep .1
 echo "Test #1: check server's response................"
 ./test_ping_server_app.sh
 
-if [ "$\?" = 1 ]
+if [ $? = 1 ]
 then 
 	exit 1
 fi
