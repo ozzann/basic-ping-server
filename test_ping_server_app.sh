@@ -1,12 +1,6 @@
 
 #!/bin/bash
 
-echo "Preparing tests.............................."
-./prepare_tests.sh
-
-sleep .5
-echo "Test #1: check server's response................"
-
 RESULT="result.txt"
 curl -s localhost:9000 > $RESULT
 
