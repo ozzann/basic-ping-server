@@ -4,8 +4,6 @@
 echo "Preparing tests.............................."
 ./prepare_tests.sh
 
-sleep .1
-
 echo "Test #1: check server's response................"
 ./test_ping_server_app.sh
 
