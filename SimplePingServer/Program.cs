@@ -34,7 +34,7 @@ namespace SimplePingServer
 				// Bind the socket to the local endpoint
 				listener.Bind(localEndPoint);
 				//  and listen for incoming connections
-				listener.Listen(100);
+				listener.Listen(10);
 
 				while (true)
 				{
@@ -49,13 +49,14 @@ namespace SimplePingServer
 					// Wait until a connection is made before continuing
 					thread.WaitOne();
 				}
-
-				thread.Dispose();
 			}
 			catch (Exception e)
 			{
 				Console.WriteLine("Can't connect to localhost: " + e.ToString());
 			}
+
+			thread.Dispose();
+			thread.Close();
 
 			Console.Read();
 		}
