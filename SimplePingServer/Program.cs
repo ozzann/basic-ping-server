@@ -34,7 +34,7 @@ namespace SimplePingServer
 				// Bind the socket to the local endpoint
 				listener.Bind(localEndPoint);
 				//  and listen for incoming connections
-				listener.Listen(10);
+				listener.Listen(100);
 
 				while (true)
 				{
