@@ -24,12 +24,10 @@ namespace SimplePingServer
 			//IPEndPoint localEndPoint = new IPEndPoint(ipAddress, PORT_NO);
 
 			IPEndPoint localEndPoint = new IPEndPoint(IPAddress.Any, PORT_NO);
-			Console.WriteLine(localEndPoint.ToString());
 
 			// Create a TCP/IP socket.
 			Socket listener = new Socket(AddressFamily.InterNetwork,
 				SocketType.Stream, ProtocolType.Tcp);
-Console.WriteLine(localEndPoint.ToString());
 
 			try
 			{
@@ -52,6 +50,7 @@ Console.WriteLine(localEndPoint.ToString());
 					thread.WaitOne();
 				}
 
+				thread.Dispose();
 			}
 			catch (Exception e)
 			{
