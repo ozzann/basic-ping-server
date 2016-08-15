@@ -7,7 +7,10 @@ then
 	docker rm $CONTAINERS &> /dev/null
 fi
 
-docker rmi app &> /dev/null
-
 docker build -t app . &> /dev/null
-docker run -p 9000:9000  app &
+if [ $? -ne 0 ]; then
+    echo 'Docker build failed'
+    exit 1
+fi
+
+docker run -d --cidfile $CIDFILE app &> /dev/null

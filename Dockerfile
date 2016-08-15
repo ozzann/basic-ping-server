@@ -1,6 +1,7 @@
 FROM mono
 ADD . /usr/src/app
-RUN mcs /usr/src/app/SimplePingServer/Program.cs
+WORKDIR /usr/src/app
+RUN mcs SimplePingServer/Program.cs
 
-EXPOSE 9000
-CMD [ "mono", "/usr/src/app/SimplePingServer/Program.exe" ]
+CMD [ "mono", "SimplePingServer/Program.exe" ]
+
