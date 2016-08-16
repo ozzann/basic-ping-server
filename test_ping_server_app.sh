@@ -3,21 +3,19 @@
 
 echo "Running tests .................................."
 
-# get docker ip address
-DOCKERIP=$(docker inspect --format='{{.NetworkSettings.IPAddress}}' $CONTAINERID)
-PORT=9000
-
-# wait until server is ready
+# wait until tmp file 'listens' is created.
+# It indicates if a servery is ready or not.
 echo "Test #1: ping a server ........................."
 MAXTRIES=5
 ATTEMPT=1
-until  nc -z $DOCKERIP $PORT || [ $ATTEMPT == $MAXTRIES ]
+TMPFILE=listens
+until [ -f TMPFILE ] || [ $ATTEMPT == $MAXTRIES ]
 do
     sleep 0.5
     ATTEMPT=$(($ATTEMPT+1))
 done
 
-if ! nc -z $DOCKERIP $PORT
+if ! -f TMPFILE
 then
     echo "Fail!"
     exit 1
@@ -28,7 +26,7 @@ fi
 echo "Test #2: check server's response ..............."
 
 RESULT="serverResponse.txt"
-curl -s $DOCKERIP:$PORT > $RESULT
+curl -s http://localhost:9000 > $RESULT
 
 # check result
 EXPECTED="expectedResponse.txt"
