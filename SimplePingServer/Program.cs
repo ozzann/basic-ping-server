@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Configuration;
-using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
-using System.Timers;
 
 namespace SimplePingServer
 {
@@ -35,6 +32,7 @@ namespace SimplePingServer
 				listener.Bind(localEndPoint);
 				//  and listen for incoming connections
 				listener.Listen(100);
+
 
 				while (true)
 				{
