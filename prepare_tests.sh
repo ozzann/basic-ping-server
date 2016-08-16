@@ -13,4 +13,4 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-docker run -d -p 9000:9000 app &> /dev/null
+docker run -d -p 9000:9000 --cidfile $CIDFILE  app &> /dev/null

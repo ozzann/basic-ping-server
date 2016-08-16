@@ -1,21 +1,37 @@
 
 #!/bin/bash
 
+# Internal functions
+is_listen() {
+    LOGS=$(docker logs $1)
+    LISTEN_REGEX="LISTEN"
+
+    if [[ $LOGS =~ $LISTEN_REGEX ]]
+    then
+       return 1
+    fi
+
+    return 0
+}
+
+
 echo "Running tests .................................."
 
-# wait until tmp file 'listens' is created.
-# It indicates if a servery is ready or not.
+# wait until tmp file server is ready
 echo "Test #1: ping a server ........................."
 MAXTRIES=5
 ATTEMPT=1
-TMPFILE=listens
-until [ -f TMPFILE ] || [ $ATTEMPT == $MAXTRIES ]
+
+LISTEN_FLAG=
+until [ $LISTEN_FLAG ] || [ $ATTEMPT == $MAXTRIES ]
 do
-    sleep 0.5
+    sleep 0.1
     ATTEMPT=$(($ATTEMPT+1))
+    is_listen $CONTAINERID
+    LISTEN_FLAG=$?
 done
 
-if ! -f TMPFILE
+if [ ! $LISTEN_FLAG ]
 then
     echo "Fail!"
     exit 1
