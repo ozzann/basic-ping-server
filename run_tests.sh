@@ -18,4 +18,8 @@ then
 	exit 1
 fi
 
+# If tests are successfull then deploy code to 
+# the remote production host
+./deploy.sh
+
 exit 0
