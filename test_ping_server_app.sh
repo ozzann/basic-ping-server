@@ -2,7 +2,7 @@
 #!/bin/bash
 
 # Internal functions
-is_listen() {
+is_listening() {
     LOGS=$(docker logs $1)
     LISTEN_REGEX="LISTEN"
 
@@ -22,12 +22,13 @@ echo "Test #1: ping a server ........................."
 MAXTRIES=5
 ATTEMPT=1
 
-LISTEN_FLAG=
-until [ $LISTEN_FLAG ] || [ $ATTEMPT == $MAXTRIES ]
+is_listening $CONTAINERID
+LISTEN_FLAG=$?
+until [ $LISTEN_FLAG == 1 ] || [ $ATTEMPT == $MAXTRIES ]
 do
     sleep 0.1
     ATTEMPT=$(($ATTEMPT+1))
-    is_listen $CONTAINERID
+    is_listening $CONTAINERID
     LISTEN_FLAG=$?
 done
 
