@@ -2,7 +2,7 @@
 #!/bin/bash
 
 # tmp file containing container ID
-export CIDFILE="app.cid"
+export CIDFILE="myapp.cid"
 
 echo "Preparing tests................................."
 ./prepare_tests.sh  
