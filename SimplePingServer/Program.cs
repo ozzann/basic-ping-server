@@ -10,7 +10,6 @@ namespace SimplePingServer
 	class MainClass
 	{
 		const int PORT_NO = 9000;
-		const string tmpFile = "listens";
 
 		// Thread signal
 		public static ManualResetEvent thread = new ManualResetEvent(false);
@@ -35,8 +34,8 @@ namespace SimplePingServer
 				//  and listen for incoming connections
 				listener.Listen(100);
 
-				// create a file indicates that server starts listen to the port
-				File.Create(tmpFile);
+				// log that a server starts listen to a port
+                                Console.WriteLine("LISTEN");
 
 				while (true)
 				{
@@ -117,9 +116,6 @@ namespace SimplePingServer
 		public static void Main(String[] args)
 		{
 			Listen();
-
-			// delete temporary files
-			File.Delete(tmpFile);
 		}
 	}
 }
