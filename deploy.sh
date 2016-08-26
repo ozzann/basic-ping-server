@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Deploying ............ "
+echo "Deploying! ............ "
 
 CONTAINERS=$(docker ps -q -a)
 if [ "$CONTAINERS" ]
