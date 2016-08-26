@@ -17,7 +17,7 @@ is_listening() {
 
 echo "Running tests .................................."
 
-# wait until tmp file server is ready
+# wait until the server is ready
 echo "Test #1: ping a server ........................."
 MAXTRIES=5
 ATTEMPT=1
