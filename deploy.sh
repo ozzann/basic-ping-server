@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Deploying ............ "
+
 CONTAINERS=$(docker ps -q -a)
 if [ "$CONTAINERS" ]
 then
