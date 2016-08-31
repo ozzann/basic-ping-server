@@ -43,7 +43,7 @@ fi
 echo "Test #2: check server's response ..............."
 
 RESULT="serverResponse.txt"
-curl -s http://localhost:9001 > $RESULT
+curl -s http://localhost:9000 > $RESULT
 
 # check result
 EXPECTED="expectedResponse.txt"
