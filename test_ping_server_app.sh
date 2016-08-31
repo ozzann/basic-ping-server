@@ -19,7 +19,7 @@ echo "Running tests .................................."
 
 # wait until the server is ready
 echo "Test #1: ping a server ........................."
-MAXTRIES=5
+MAXTRIES=10
 ATTEMPT=1
 
 is_listening $CONTAINERID
